@@ -9,8 +9,8 @@ Sample data - 10 digits, Code 9738
 From 1 to 9 - Reverse pass - 1-10-9 - 2 moves Forward pass - 1-2-3-..-9
 Since forward is long better option is reverse. Likewise find the optimal time.
 """
-
-def findtimetounlock(N: int, K: int, code:str)->int:
+from typing import List
+def findtimetounlock(N: int, K: int, code:List[int])->int:
     currentpos  = 1
     secstomoveby1pos = 1
     dial = []
@@ -29,4 +29,4 @@ def findtimetounlock(N: int, K: int, code:str)->int:
     print(timetaken)
     return 0
 
-findtimetounlock(10,4,"9616")
+findtimetounlock(10,4,[9,4,4,8])

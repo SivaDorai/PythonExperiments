@@ -8,9 +8,11 @@ def getMaximumEatenDishCount(N: int, D: List[int], K: int) -> int:
     maxDishCount = 0
     if N >=1 and N<500000 and K<=N and K>=1 :
       for i in D:
-          if i not in want[-K::]:
-              want.append(i)
-              maxDishCount+=1
-      print(want)
+          if i >= 1 and i <= 1000000:
+              if i not in want[-K::]:
+                  want.append(i)
+                  maxDishCount+=1
+      print(maxDishCount)
     return maxDishCount
 
+getMaximumEatenDishCount(6,[1,2,3,3,2,1],1)
