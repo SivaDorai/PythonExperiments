@@ -10,23 +10,15 @@ From 1 to 9 - Reverse pass - 1-10-9 - 2 moves Forward pass - 1-2-3-..-9
 Since forward is long better option is reverse. Likewise find the optimal time.
 """
 from typing import List
-def findtimetounlock(N: int, K: int, code:List[int])->int:
-    currentpos  = 1
-    secstomoveby1pos = 1
-    dial = []
-    for i in range(1,N+1):
-        dial.append(i)
-    timetaken  = 0
-    for j in code:
-        gotopos = dial.index(int(j))+1
-        forward = abs(gotopos - currentpos)
-        reverse = currentpos - gotopos + N
-        if forward < reverse:
-            timetaken = timetaken + forward
-        else:
-            timetaken = timetaken + reverse
-        currentpos = gotopos
-    print(timetaken)
-    return 0
+def findtimetounlock(N: int, K: int, C:List[int])->int:
 
-findtimetounlock(10,4,[9,4,4,8])
+    timetaken  = 0
+    if C[0]!=1:
+        C.insert(0,1)
+    for j in range(C.__len__()-1):
+        forward = abs(C[j+1]-C[j])
+        reverse = N - forward
+        timetaken = timetaken + min(forward, reverse)
+    return timetaken
+
+print(findtimetounlock(10,4,[9,4,4,8]))
